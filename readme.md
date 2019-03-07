@@ -8,4 +8,4 @@ This to learn DOM by building a small App that calculates Body Mass Index
 # Author
 #### Husham
 # DEMO
-[Portfolio](https://husham2019.github.io/task1/)
+[Portfolio](https://husham007.github.io/BMI/)
