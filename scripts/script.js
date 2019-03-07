@@ -1,5 +1,21 @@
 /**/
 
+class Person {
+  constructor(weight, height){
+    this.weight = weight;
+    this.height = height;
+    this.bmi = this.calBMI();
+    console.log('constructor called');
+  }
+
+  calBMI(){
+    return BMI(this.weight, this.height);
+  }
+  showBMI(){
+    displayResult(this.bmi);
+  }
+}
+
 function setInitials(){
     let divOne = document.querySelector('#one');
     let divTwo = document.querySelector('#two');
@@ -11,7 +27,7 @@ function setInitials(){
     let obese = document.createTextNode('Obese weight BMI is 30 or over');
     let overWeight = document.createTextNode('Over weight BMI is 25 to 29.9');
 
-    divOne.style.color = 'yellow';
+    divOne.style.color = '#F7C501';
     divOne.style.fontWeight = 'bold';    
     divTwo.style.color = 'Green';
     divTwo.style.fontWeight = 'bold';  
@@ -30,6 +46,7 @@ function setInitials(){
     divFour.appendChild(obese);
 
 }
+/*
 function calculateBMI(){
 let weight = Number(document.querySelector('#weight').value);
 let height = Number(document.querySelector('#height').value);
@@ -37,7 +54,18 @@ console.log(weight);
 console.log(height);
 
 displayResult (BMI(weight, height));
-}
+}*/
+
+function calculateBMI(){
+  
+  let weight = Number(document.querySelector('#weight').value);
+  let height = Number(document.querySelector('#height').value);
+
+  let person = new Person(weight, height);
+  person.calBMI();
+  person.showBMI();
+  
+  }
 
 function displayResult(bmi){
 let content = document.querySelector('.bmi-result');
@@ -70,7 +98,7 @@ function BMI(weight, height) {
       case bmi < 18.5:
         text = "Under weight BMI is less than 18.5 ";
         image = 'underweight';
-        color = 'yellow';
+        color = '#F7C501';
 
         break;
 
@@ -101,3 +129,11 @@ function BMI(weight, height) {
     //console.log(text);
     return {bmi: bmi.toFixed(2), message: text, image: image, color: color};
   }
+
+  
+
+
+  /**/
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
