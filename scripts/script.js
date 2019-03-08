@@ -58,14 +58,48 @@ displayResult (BMI(weight, height));
 
 function calculateBMI(){
   
-  let weight = Number(document.querySelector('#weight').value);
-  let height = Number(document.querySelector('#height').value);
-
-  let person = new Person(weight, height);
+  let weight = document.querySelector('#weight').value;
+  let height = document.querySelector('#height').value;
+  let pattern = /^\d*[\.]?\d+$/g;
+  //console.log(pattern);
+  //console.log(weight, weight.match(pattern));
+ //console.log(weight);
+ if (weight.match(pattern) && height.match(pattern)){
+  let person = new Person(Number(weight), Number(height));
+  clearErrors();
   person.calBMI();
   person.showBMI();
-  
+ }
+
+ clearErrors();
+  if (!weight.match(pattern)){
+    console.log('weight error');
+    //clearFields();
+    
+    showError('weight');
   }
+   if (!height.match(pattern)){
+    console.log('height error');
+    //clearFields();
+    
+    showError('height');
+  }
+}
+
+function showError(err){
+let div = document.createElement('div');
+div.style.color = 'red';
+div.style.padding = '1vw';
+div.style.margin = '1vw 0';
+div.style.border = '2px solid red';
+div.style.borderRadius = '10px';
+let errorMsg = document.createTextNode('Wrong Input '+err);
+let errorsDiv = document.querySelector('.errors');
+div.append(errorMsg);
+errorsDiv.append(div);
+
+
+}
 
 function displayResult(bmi){
 let content = document.querySelector('.bmi-result');
@@ -85,7 +119,14 @@ clearFields();
 function clearFields(){
     document.querySelector('#weight').value = null;
     document.querySelector('#height').value = null;
-}
+  }
+
+  function clearErrors(){
+    
+    while (document.querySelector('.errors').firstChild) {
+      document.querySelector('.errors').removeChild(document.querySelector('.errors').firstChild);
+  }
+  }
 
 function BMI(weight, height) {
     let bmi = weight / (height * height);

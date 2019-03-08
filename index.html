@@ -11,10 +11,13 @@
 <body onload=setInitials();>
 
 <h1>Calculate your BMI</h1>
+
 <div class = 'feilds'>
-<input type="number" name="weight" id="weight" placeholder="Mass in Kilogram" required>
-<input type="number" name="height" id="height" placeholder="Height in meter" required>
-<button name="calculate" id="calculate" onclick=calculateBMI();>Calculate</button>
+        
+<input type="text" name="weight" id="weight" placeholder="Mass in Kilogram"  required> 
+<input type="text" name="height" id="height" placeholder="Height in meter"  required>
+<button name="calculate" id="calculate" onclick =calculateBMI();> Calculate </button>
+<div class = 'errors'></div>
 </div>
 <div class="container">
     <div class="bmi-text-container">
@@ -33,6 +36,5 @@
 
 
 
-    
 </body>
 </html>
