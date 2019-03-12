@@ -1,40 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>BMI</title>
     <script src="./scripts/script.js"></script>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body onload=setInitials();>
-
-<h1>Calculate your BMI</h1>
-
-<div class = 'feilds'>
-        
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body onload="setInitials();">
+    <h1>Calculate your BMI</h1>
+    <form action="#">
+      <div class="feilds">
+        <!--      
 <input type="text" name="weight" id="weight" placeholder="Mass in Kilogram"  required> 
 <input type="text" name="height" id="height" placeholder="Height in meter"  required>
-<button name="calculate" id="calculate" onclick =calculateBMI();> Calculate </button>
-<div class = 'errors'></div>
-</div>
-<div class="container">
-    <div class="bmi-text-container">
-        <div id="one"></div>
-        <div id="two"></div>
-        <div id="three"></div>
-        <div id="four"></div>
+ -->
 
-    </div>
-    <div class="bmi-img-container">
-        <img class = "image" src="./assets/images/default.jpg" alt="Default image">
-    </div>
+        <input
+          type="number"
+          name="weight"
+          id="weight"
+          placeholder="Mass in Kilogram"
+          required
+          min="0"
+        />
+        <input
+          type="number"
+          name="height"
+          id="height"
+          placeholder="Height in meter"
+          required
+          min="0"
+        />
 
-</div>
-    <div class = "bmi-result">Find your BMI</div>
-
-
-
-</body>
+        <button name="calculate" id="calculate" onclick="calculateBMI();">
+          Calculate
+        </button>
+        <button
+          name="calculateTwo"
+          id="calculateTwo"
+          onclick="calculateBMI();"
+          type="submit"
+        >
+          Calculate
+        </button>
+        <div class="errors"></div>
+      </div>
+      <div class="container">
+        <div class="bmi-text-container">
+          <div id="one"></div>
+          <div id="two"></div>
+          <div id="three"></div>
+          <div id="four"></div>
+        </div>
+        <div class="bmi-img-container">
+          <img
+            class="image"
+            src="./assets/images/default.jpg"
+            alt="Default image"
+          />
+        </div>
+      </div>
+      <div class="bmi-result">Find your BMI</div>
+    </form>
+  </body>
 </html>
