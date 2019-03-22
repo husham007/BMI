@@ -46,49 +46,35 @@ function setInitials() {
   divFour.appendChild(obese);
 
   document
-    .querySelector("#calculateTwo")
+    .querySelector("#calculate")
     .addEventListener("click", function(e) {
-      console.log("i am form event", e);
-      e.preventDefault();
+    let weight = document.querySelector("#weight").value;
+    let height = document.querySelector("#height").value;
+
+    validateAndCreatePerson(weight, height);      
     });
 }
-/*
-function calculateBMI(){
-let weight = Number(document.querySelector('#weight').value);
-let height = Number(document.querySelector('#height').value);
-console.log(weight);
-console.log(height);
 
-displayResult (BMI(weight, height));
-}*/
 
-function calculateBMI() {
-  let weight = document.querySelector("#weight").value;
-  let height = document.querySelector("#height").value;
-  let pattern = /^\d*[\.]?\d+$/g;
-  //console.log(pattern);
-  //console.log(weight, weight.match(pattern));
-  //console.log(weight);
+function validateAndCreatePerson(weight, height) {  
+  let pattern = /^\d*[\.]?\d+$/g;  
   if (weight.match(pattern) && height.match(pattern)) {
     let person = new Person(Number(weight), Number(height));
     clearErrors();
     person.calBMI();
     person.showBMI();
-  }
+  } else {
+    if (!weight.match(pattern)) {
+      clearErrors();
+      showError("weight");
+    }
+     if (!height.match(pattern)) {
+      console.log("height error");
+      showError("height");
+    }
 
-  clearErrors();
-  if (!weight.match(pattern)) {
-    console.log("weight error");
-    //clearFields();
-
-    showError("weight");
   }
-  if (!height.match(pattern)) {
-    console.log("height error");
-    //clearFields();
-
-    showError("height");
-  }
+  
 }
 
 function showError(err) {
@@ -124,11 +110,12 @@ function clearFields() {
 }
 
 function clearErrors() {
-  while (document.querySelector(".errors").firstChild) {
+  /*while (document.querySelector(".errors").firstChild) {
     document
       .querySelector(".errors")
       .removeChild(document.querySelector(".errors").firstChild);
-  }
+  }*/
+  document.querySelector('.errors').innerHTML='';
 }
 
 function BMI(weight, height) {
@@ -173,9 +160,3 @@ function BMI(weight, height) {
   //console.log(text);
   return { bmi: bmi.toFixed(2), message: text, image: image, color: color };
 }
-
-/**/
-var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
-var SpeechRecognitionEvent =
-  SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
